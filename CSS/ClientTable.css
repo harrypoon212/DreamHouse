@@ -1,0 +1,128 @@
+table.blueTable {
+    border: 1px solid #1C6EA4;
+    background-color: #EEEEEE;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+table.blueTable td,
+table.blueTable th {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+}
+
+table.blueTable tbody td {
+    font-size: 13px;
+}
+
+table.blueTable tr:nth-child(even) {
+    background: #D0E4F5;
+}
+
+table.blueTable thead {
+    background: #1C6EA4;
+    background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    border-bottom: 2px solid #444444;
+}
+
+table.blueTable thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-left: 2px solid #D0E4F5;
+}
+
+table.blueTable thead th:first-child {
+    border-left: none;
+}
+
+table.blueTable tfoot {
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #D0E4F5;
+    background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    border-top: 2px solid #444444;
+}
+
+table.blueTable tfoot td {
+    font-size: 14px;
+}
+
+table.blueTable tfoot .links {
+    text-align: right;
+}
+
+table.blueTable tfoot .links a {
+    display: inline-block;
+    background: #1C6EA4;
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+
+/*--------------------------------------------*/
+
+.checkbox {
+    height: 5px;
+    width: 100px;
+    padding: 5px;
+    display: flex;
+    background: #fff;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, .2);
+    justify-content: space-between;
+}
+
+.checkbox input {
+    outline: none;
+    height: 10px;
+    width: 100px;
+    border-radius: 50px;
+    -webkit-appearance: none;
+    position: relative;
+    background: #e6e6e6;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.checkbox input:checked {
+    background: #664AFF;
+}
+
+.checkbox input:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    height: 100%;
+    width: 10px;
+    background: linear-gradient(#fff, #f2f2f2, #e6e6e6, #d9d9d9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    border-radius: 50px;
+    transform: scale(0.85);
+    transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+input:checked:before {
+    left: 39px;
+}
+
+.checkbox .text:before {
+    content: "Disabled";
+    font-size: 5px;
+    font-weight: 500;
+    color: #bfbfbf;
+}
+
+input:checked~.text:before {
+    color: #664AFF;
+    font-size: 5px;
+    content: "Enabled";
+}
