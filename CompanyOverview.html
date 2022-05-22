@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="CSS/index.css" rel="stylesheet" type="text/css">
+    <link href="CSS/LoginForm.css" rel="stylesheet" type="text/css">
+    <script src="./js/Login.js"></script>
+    <style>
+        #BG {
+            background-image: url(./img/HongKongBG.jpg);
+            margin-top: -55px;
+        }
+        
+        #text {
+            background-color: rgba(0, 0, 0, 0.1);
+            font-family: Georgia, serif;
+            font-size: 30px;
+            text-align: center;
+            text-shadow: 1px 1px 3px #fcfcfc;
+            color: #d181d8;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mainWrapper">
+        <div class="topnav" id="myTopnav">
+            <a href="index.html">Dream House</a>
+            <a href="CompanyOverview.html">About</a>
+            <div class="dropdown">
+                <button class="dropbtn">Account</button>
+                <div class="dropdown-content">
+                    <a href="Info.html">Information</a>
+                    <a href="#" id="Login">Login</a>
+                    <a href="CreateAccount.html">Sign up</a>
+                    <a href="Agent_Upload.html">Upload property </a>
+                    <a href="Agent_Edit.html"> Edit property</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Manager</button>
+                <div class="dropdown-content">
+                    <a href="SPOILER_ClientList.html">Client List</a>
+                    <a href="CreateAgentAccount.html">Create Agent Account</a>
+                </div>
+            </div>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+
+
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
+        </script>
+
+
+
+        <section id="offer">
+            <!-- The offer section displays a banner text for promotions -->
+            <h2><b>Welcome to the Dream House</b></h2>
+            <p><strong><em>Buy your Dream House now!!!</em></strong></p>
+        </section>
+
+        <div id="content">
+
+            <div id="BG">
+                <!-- <img src="./img/Bar.jpg" width="100%" height="200px"> -->
+                <div id="text">
+                    <p>
+                        Dream House Property Agency Limited was established in 1978. It was once a tiny company with only a few branches on Hong Kong Island. After 40-year development, “Dream House Property” is now a renowned property agency brand in Hong Kong and China. The
+                        number of branches has reached 2,000 across China including 400 in Hong Kong.</p>
+                    <p>
+                        Dream House Property provides real estate agency services in the sectors of residential properties, commercial properties, private lands, and car park spaces, both in new development and second-hand markets. Besides, there are professional and value-added
+                        services including surveying, valuation, real estate tender, auction, property mergers and acquisitions, mortgage broking and immigration/ emigration consultancy, etc. in order to provide customers with one-stop agency services.
+                    </p>
+
+                    <p>
+                        Dream House Property also introduces real estate developments of other countries and Guangdong-Hong Kong-Macao Greater Bay Area to Hong Kong customers, which provides them with more investment opportunities.
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+        <br/>
+
+        <footer>
+            <!-- This is the footer with default 3 divs -->
+            <div>
+                <p>Information provided on this page is for reference purposes only. The company is not responsible for any inconvenience or loss caused by mistakes or omissions. ©2020 DreamHouse Co., Ltd. License number x-xxxxxxx All rights reserved.</p>
+            </div>
+            <div>
+                <p>In addition to the dual-interface search function using maps and lists, there are also diversified functions such as VR property viewing guide, real-time property valuation services, and property comparison, allowing users to search for
+                    properties and receive property market information at a glance.</p>
+            </div>
+            <div class="footerlinks">
+                <p><a href="https://zh-hk.facebook.com/" title="Link">Facebook</a></p>
+                <p><a href="https://www.youtube.com" title="Link">YouTube</a></p>
+                <p><a href="#" title="Link">Link 3</a></p>
+            </div>
+        </footer>
+
+    </div>
+
+    <div id="myModal" class="modal">
+        <form class="modal-content" action="" method="post">
+            <h1>Login Form</h1>
+            <div class="container">
+                <div class="txtb">
+                    <input type="text" name="uname" id="uname" required>
+                    <span data-placeholder="Name"></span>
+                </div><br/><br/><br/><br/>
+                <div class="txtb">
+                    <input type="password" name="pwd" id="pwd" required>
+                    <span data-placeholder="Password"></span>
+                </div><br/><br/><br/>
+                <input type="submit" class="btnSubmit" value="Login" id="login"><br/>
+                <input type="button" class="btnSubmit" value="Cancel" onclick="document.getElementById('myModal').style.display='none'">
+            </div>
+            <div class="bottom-text">
+                You have not account?<a href="CreateAccount.html">Sign up</a><br/> Forgot
+                <a href="#" id="Forgotpwd">Password</a>
+            </div>
+            <script type="text/javascript">
+                $(".txtb input").on("focus", function() {
+                    $(this).addClass("focus");
+                });
+
+                $(".txtb input").on("blur", function() {
+                    if ($(this).val() == "")
+                        $(this).addClass("focus");
+                });
+            </script>
+        </form>
+    </div>
+    <script src="./js/ShowLoginForm.js"></script>
+
+
+    </div>
+
+
+</body>
+
+</html>

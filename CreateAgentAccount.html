@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dream House</title>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link href="CSS/index.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="CSS/CreateAccount.css">
+    <script src="./js/CreateAccount.js"></script>
+
+    <link rel="stylesheet" href="CSS/LoginForm.css">
+    <script src="./js/Login.js"></script>
+
+</head>
+
+<body>
+    <div id="mainWrapper">
+        <div class="topnav" id="myTopnav">
+            <a href="index.html">Dream House</a>
+            <a href="CompanyOverview.html">About</a>
+            <div class="dropdown">
+                <button class="dropbtn">Account</button>
+                <div class="dropdown-content">
+                    <a href="Info.html">Information</a>
+                    <a href="#" id="Login">Login</a>
+                    <a href="CreateAccount.html">Sign up</a>
+                    <a href="Agent_Upload.html">Upload property </a>
+                    <a href="Agent_Edit.html"> Edit property</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Manager</button>
+                <div class="dropdown-content">
+                    <a href="SPOILER_ClientList.html">Client List</a>
+                    <a href="CreateAgentAccount.html">Create Agent Account</a>
+                </div>
+            </div>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+
+
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
+        </script>
+
+        <div class="containerA">
+            <form class="login-formA" method="post">
+                <h1>Create Account</h1>
+                <div class="txtbA">
+                    <input type="text" id="CreateAc_uname" required>
+                    <span data-placeholder="Name"></span>
+                </div>
+                <center><label>Sex:</label>
+                    <input type="radio" id="Sex" name="gender" value="male" checked="checked">Male
+                    <input type="radio" id="Sex" name="gender" value="female">Female
+                </center>
+                <div class="txtbA">
+                    <input type="email" id="CreateAc_email" required>
+                    <span data-placeholder="Email"></span>
+                </div>
+                <div class="txtbA">
+                    <input type="password" id="CreateAc_pwd" required>
+                    <span data-placeholder="Password"></span>
+                </div>
+                <div class="txtbA">
+                    <input type="password" id="CreateAc_cpwd" required>
+                    <span data-placeholder="Confirm Password"></span>
+                </div>
+                <div class="txtbA">
+                    <input type="tel" id="CreateAc_phoneNumber" pattern="[0-9]{8}" required>
+                    <span data-placeholder="Phone Number * e.g 12345678"></span>
+                </div>
+                <div class="txtbA">
+                    <input type="date" id="CreateAc_Birthday">
+                    <span data-placeholder="Birthday"></span>
+                </div>
+                <input type="submit" class="btnSubmitA" value="Submit" id="CreateAc_Submit">
+                <div class="bottom-textA">
+                    Already have account?<a href="#">Sign in</a>
+                </div>
+            </form>
+            <script type="text/javascript">
+                $(".txtbA input").on("focus", function() {
+                    $(this).addClass("focus");
+                });
+
+                $(".txtbA input").on("blur", function() {
+                    if ($(this).val() == "")
+                        $(this).addClass("focus");
+                });
+            </script>
+        </div>
+
+    </div>
+    <div id="myModal" class="modal">
+        <form class="modal-content" action="" method="post">
+            <h1>Login Form</h1>
+            <div class="container">
+                <div class="txtb">
+                    <input type="text" name="uname" id="uname" required>
+                    <span data-placeholder="Name"></span>
+                </div><br/><br/><br/><br/>
+                <div class="txtb">
+                    <input type="password" name="pwd" id="pwd" required>
+                    <span data-placeholder="Password"></span>
+                </div><br/><br/><br/>
+                <input type="submit" class="btnSubmit" value="Login" id="login"><br/>
+                <input type="button" class="btnSubmit" value="Cancel" onclick="document.getElementById('myModal').style.display='none'">
+            </div>
+            <div class="bottom-text">
+                You have not account?<a href="CreateAccount.html">Sign up</a><br/> Forgot
+                <a href="#">Password</a>
+            </div>
+            <script type="text/javascript">
+                $(".txtb input").on("focus", function() {
+                    $(this).addClass("focus");
+                });
+
+                $(".txtb input").on("blur", function() {
+                    if ($(this).val() == "")
+                        $(this).addClass("focus");
+                });
+            </script>
+        </form>
+    </div>
+    <script src="./js/ShowLoginForm.js"></script>
+</body>
+
+</html>

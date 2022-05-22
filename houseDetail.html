@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="CSS/index.css" rel="stylesheet" type="text/css">
+    <link href="CSS/LoginForm.css" rel="stylesheet" type="text/css">
+    <link href="CSS/houseDetail.css" rel="stylesheet" type="text/css">
+    <script src="./js/Login.js"></script>
+</head>
+
+<body>
+    <div id="mainWrapper">
+        <div class="topnav" id="myTopnav">
+            <a href="index.html">Dream House</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <div class="dropdown">
+                <button class="dropbtn">Account</button>
+                <div class="dropdown-content">
+                    <a href="Info.html">Information</a>
+                    <a href="#" id="Login">Login</a>
+                    <a href="CreateAccount.html">Sign up</a>
+                    <a href="Agent_Upload.html">Upload property </a>
+                    <a href="Agent_Edit.html"> Edit property</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Manager</button>
+                <div class="dropdown-content">
+                    <a href="SPOILER_ClientList.html">Client List</a>
+                    <a href="CreateAgentAccount.html">Create Agent Account</a>
+                </div>
+            </div>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+
+
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
+        </script>
+
+        <div id="content">
+
+            <div id="bar">
+                <h1>Flat C, Higher Floor, Tower 1, Phase 2, Ultima</h1><br/>
+                <a href="https://goo.gl/maps/RvUJtF3a8twCNqUH6">23 Fat Kwong Street Ho Man Tin | Sun Hung Kai</a>
+            </div>
+
+
+
+
+            <table id="All">
+                <tr>
+                    <th>
+                        <div id="btncol">
+
+                            <button id="btn">Photo</button>
+                            <button id="btn">Video</button>
+                            <button id="btn">VR</button>
+                            <button id="btn">Floor Plan/Site Plan</button>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <img class="img" src="./img/house1.jpg">
+                    </th>
+                    <th>
+                        Sell: $41M
+                        <p>Monthly $81,000</p>
+                        <br/>
+                        <div id="discount">
+                            <center>
+                                <table>
+                                    <th>
+                                        Free mortgage adviser service
+                                        <p>95% Approval rate from banks</p>
+                                    </th>
+                                    <th><button>Learn More</button></th>
+                                </table>
+                            </center>
+                        </div>
+                        <br/>
+                        <p>Net: 1,237sq.ft.</p>
+                        <p>$33,145/sq.ft.</p>
+
+                        <div id="discount">
+                            <center>
+                                <table>
+                                    <th>
+                                        Avg. Price / ft ² in this <br/>estate$22,316/sq.ft.
+                                    </th>
+                                    <th>The average price per square foot of <br/>this unit compares to this estateAbove<br/> 10+%</th>
+                                </table>
+                            </center>
+                        </div>
+                        <br/>
+                        <div>
+                            <center>
+                                <table>
+                                    <th>
+                                        Layout
+                                    </th>
+                                    <th></th>
+                                    <th>
+                                        Direction
+                                    </th>
+                                    <th></th>
+                                    <th>
+                                        Age
+                                    </th>
+                                    <tr>
+                                        <td>
+                                            4Rm 2Area
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            NorthEast
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            4Yrs
+                                        </td>
+                                    </tr>
+                                </table>
+                            </center>
+                        </div>
+                        <hr>
+                        <br/>
+                        <div id="discount">
+                            <center>
+                                <table>
+                                    <th>
+                                        Facilities /<br/> Features
+                                    </th>
+                                    <th>Well Decorated, Original Layout, Balcony <br/>Close To MTR, Overlooking Sports Field</th>
+                                </table>
+                            </center>
+                    </th>
+                </tr>
+
+            </table>
+            <hr>
+
+            <div id="commentform">
+
+                <label for="start">start:</label>
+                <div class="stars">
+                    <input type="radio" id="five" name="rate" class="rate" value="5*">
+                    <label for="five"></label>
+                    <input type="radio" id="four" name="rate" class="rate" value="4*">
+                    <label for="four"></label>
+                    <input type="radio" id="three" name="rate" class="rate" value="3*">
+                    <label for="three"></label>
+                    <input type="radio" id="two" name="rate" class="rate" value="2*">
+                    <label for="two"></label>
+                    <input type="radio" id="one" name="rate" class="rate" value="1*">
+                    <label for="one"></label>
+                </div>
+
+                <label for="Comment">Comment</label>
+                <input type="text" id="Comment" name="Comment" placeholder="What you think...">
+
+                <input type="submit" value="Submit" id="submitcomment">
+
+
+                <hr>
+                <div id="usercomment">
+                    <br/><img src="./img/test.jpg" width="50" height="50"> <b>Ada</b><br/>10/15/2020 18:54:20
+                    <br/> 5**
+                    <br/> This is good<br/>
+                </div>
+                <script>
+                    $(document).ready(function() {
+                        $('#submitcomment').click(function() {
+                            var today = new Date();
+                            var dd = String(today.getDate()).padStart(2, '0');
+                            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                            var yyyy = today.getFullYear();
+                            var selectedVal = "";
+                            var selected = $("input[type='radio'][name='rate']:checked");
+                            if (selected.length > 0) {
+                                selectedVal = selected.val();
+                            }
+                            var comment = $('#Comment').val();
+                            today = mm + '/' + dd + '/' + yyyy + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                            $("#usercomment").prepend(`<br/><img src="./img/test.jpg" width="50" height="50"> <b>Kenneth Tsang<b/><br/>${today}<br/>${selectedVal}*<br/>${comment}<br/><br/>`);
+                        });
+                    });
+                </script>
+
+
+
+            </div>
+
+
+            <hr>
+            <center>
+                <table id=morehouse>
+                    <tr>
+                        <th>
+                            <a href="index.html">More Recommendations ></a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="searchContent2"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="test">
+                                <ul class="pagination">
+                                    <li><a href="#">Previous</a></li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">Next</a></li>
+                                </ul>
+                            </div>
+                            <script>
+                                $("li").click(function() {
+                                    $(this).addClass("active").siblings().removeClass("active");
+                                });
+                            </script>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+
+            <hr>
+
+            <center>
+                <h1>
+                    Location&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <a href="https://goo.gl/maps/RvUJtF3a8twCNqUH6">23 Fat Kwong Street Ho Man Tin | Sun Hung Kai</a>
+
+                </h1>
+            </center>
+            <br/><br/>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.1051663900084!2d114.17985481495491!3d22.311862085317628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340400dc397e448b%3A0x9d8e3199481ffff2!2z5aSp6ZGE!5e0!3m2!1szh-TW!2shk!4v1602345688466!5m2!1szh-TW!2shk"
+                width="1900" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+
+
+            </div>
+
+            <br/>
+
+            <footer>
+                <!-- This is the footer with default 3 divs -->
+                <div>
+                    <p>Information provided on this page is for reference purposes only. The company is not responsible for any inconvenience or loss caused by mistakes or omissions. ©2020 DreamHouse Co., Ltd. License number x-xxxxxxx All rights reserved.
+                    </p>
+                </div>
+                <div>
+                    <p>In addition to the dual-interface search function using maps and lists, there are also diversified functions such as VR property viewing guide, real-time property valuation services, and property comparison, allowing users to search
+                        for properties and receive property market information at a glance.</p>
+                </div>
+                <div class="footerlinks">
+                    <p><a href="https://zh-hk.facebook.com/" title="Link">Facebook</a></p>
+                    <p><a href="https://www.youtube.com" title="Link">YouTube</a></p>
+                    <p><a href="#" title="Link">Link 3</a></p>
+                </div>
+            </footer>
+        </div>
+
+        <div id="myModal" class="modal">
+            <form class="modal-content" action="" method="post">
+                <h1>Login Form</h1>
+                <div class="container">
+                    <div class="txtb">
+                        <input type="text" name="uname" id="uname" required>
+                        <span data-placeholder="Name"></span>
+                    </div><br/><br/><br/><br/>
+                    <div class="txtb">
+                        <input type="password" name="pwd" id="pwd" required>
+                        <span data-placeholder="Password"></span>
+                    </div><br/><br/><br/>
+                    <input type="submit" class="btnSubmit" value="Login" id="login"><br/>
+                    <input type="button" class="btnSubmit" value="Cancel" onclick="document.getElementById('myModal').style.display='none'">
+                </div>
+                <div class="bottom-text">
+                    You have not account?<a href="CreateAccount.html">Sign up</a><br/> Forgot
+                    <a href="#" id="Forgotpwd">Password</a>
+                </div>
+                <script type="text/javascript">
+                    $(".txtb input").on("focus", function() {
+                        $(this).addClass("focus");
+                    });
+
+                    $(".txtb input").on("blur", function() {
+                        if ($(this).val() == "")
+                            $(this).addClass("focus");
+                    });
+                </script>
+            </form>
+        </div>
+        <script src="./js/ShowLoginForm.js"></script>
+
+
+    </div>
+
+    <script src="./js/House.js"></script>
+</body>
+
+</html>

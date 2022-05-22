@@ -1,0 +1,60 @@
+{
+    "1": {
+        "user_id": "190404001",
+        "user_type": "Manager",
+        "user_name": "Ada",
+        "Email": "Ada123@gmail.com",
+        "password": "1234",
+        "phoneNumber": "12345678"
+    },
+    "2": {
+        "user_id": "190404002",
+        "user_type": "Manager",
+        "user_name": "Alex",
+        "Email": "Alex54135@gmail.com",
+        "password": "54321",
+        "phoneNumber": "87654321"
+    },
+    "3": {
+        "user_id": "190404003",
+        "user_type": "Agent",
+        "user_name": "Hello",
+        "Email": "Helloabc@gmail.com",
+        "password": "123456",
+        "status": "Enable",
+        "phoneNumber": "12341234"
+    },
+    "4": {
+        "user_id": "190404004",
+        "user_type": "Client",
+        "user_name": "Ken Ho",
+        "Email": "KenHo71323@gmail.com",
+        "password": "123456",
+        "phoneNumber": "12341234"
+    },
+    "5": {
+        "user_id": "190404005",
+        "user_type": "Client",
+        "user_name": "J Pan",
+        "Email": "PanGGJ335@gmail.com",
+        "password": "123456",
+        "phoneNumber": "12341234"
+    },
+    "6": {
+        "user_id": "190404006",
+        "user_type": "Agent",
+        "user_name": "Dennie",
+        "Email": "Dennie777777@gmail.com",
+        "password": "123456",
+        "status": "Disaple",
+        "phoneNumber": "12341234"
+    },
+    "7": {
+        "user_id": "190404007",
+        "user_type": "Client",
+        "user_name": "Alan Po",
+        "Email": "AP65234@gmail.com",
+        "password": "123456",
+        "phoneNumber": "12341234"
+    }
+}

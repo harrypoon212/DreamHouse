@@ -1,0 +1,36 @@
+
+        "user_name": "Ada",
+        "password": "1234",
+		"Email": "Ada123@gmail.com",
+
+
+        "user_name": "Alex",
+        "password": "54321",
+		"Email": "Alex54135@gmail.com",
+
+
+        "user_name": "Hello",
+        "password": "123456",
+		"Email": "Helloabc@gmail.com",
+
+
+        "user_name": "Ken Ho",
+        "password": "123456",
+		"Email": "KenHo71323@gmail.com",
+
+
+        "user_name": "J Pan",
+        "password": "123456",
+		"Email": "PanGGJ335@gmail.com",
+
+
+        "user_name": "Dennie",
+        "password": "123456",
+		"Email": "Dennie777777@gmail.com",
+
+
+        "user_name": "Alan Po",
+        "password": "123456",
+		"Email": "AP65234@gmail.com",
+
+

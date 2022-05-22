@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dream House</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link href="CSS/Info.css" rel="stylesheet" type="text/css">
+    <script src="./js/Info.js"></script>
+
+    <link href="CSS/index.css" rel="stylesheet" type="text/css">
+
+    <link href="CSS/ClientTable.css" rel="stylesheet" type="text/css">
+
+    <link href="CSS/LoginForm.css" rel="stylesheet" type="text/css">
+    <script src="./js/Login.js"></script>
+
+</head>
+
+<body>
+
+    <div id="mainWrapper">
+        <div class="topnav" id="myTopnav">
+            <a href="index.html">Dream House</a>
+            <a href="CompanyOverview.html">About</a>
+            <div class="dropdown">
+                <button class="dropbtn">Account</button>
+                <div class="dropdown-content">
+                    <a href="Info.html">Information</a>
+                    <a href="#" id="Login">Login</a>
+                    <a href="CreateAccount.html">Sign up</a>
+                    <a href="Agent_Upload.html">Upload property </a>
+                    <a href="Agent_Edit.html"> Edit property</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Manager</button>
+                <div class="dropdown-content">
+                    <a href="SPOILER_ClientList.html">Client List</a>
+                    <a href="CreateAgentAccount.html">Create Agent Account</a>
+                </div>
+            </div>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+
+
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
+        </script>
+
+        <section id="offer">
+            <!--<img id="img" src="img/offerHouse.jpg">-->
+            <!-- The offer section displays a banner text for promotions -->
+            <h2><b>Welcome to the Dream House</b></h2>
+            <p><strong><em>Buy your Dream House now!!!</em></strong></p>
+        </section>
+
+
+        <div id="content">
+
+            <!--Client List -->
+            <center>
+                <h1>Agent account Management</h1>
+            </center>
+            <center> Search by key word: <input type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Type <select name="UserType" id="UserType">
+                <option value="">All</option>
+                    <option value="Agent">Agent</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Client">Client</option>
+                
+              </select></br>
+                </br>
+                </br>
+            </center>
+
+
+
+
+
+            <table class="blueTable" id="ClientList">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>User Name</th>
+                        <th>E-mail</th>
+                        <th>Phone Number</th>
+                        <th>User Type</th>
+                        <th>Enable/ Disable</th>
+                    </tr>
+
+                </thead>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+                        </td>
+                    </tr>
+                </tfoot>
+
+                <script>
+                    $(document).ready(function() {
+                        $.getJSON("data.json", function(data) {
+                            var client_data = '';
+                            $.each(data, function(key, value) {
+                                client_data += '<tr>';
+                                client_data += '<td>' + value.user_id + '</td>';
+                                client_data += '<td>' + value.user_name + '</td>';
+                                client_data += '<td>' + value.Email + '</td>';
+                                client_data += '<td>' + value.phoneNumber + '</td>';
+                                client_data += '<td>' + value.user_type + '</td>';
+                                if (value.user_type == "Agent") {
+                                    if (value.status == "Enable") {
+                                        client_data += '<td><div class="checkbox"><input type="checkbox" id="click" checked><label for="click" class="text"></label></div></td>';
+                                    } else {
+                                        client_data += '<td><div class="checkbox"><input type="checkbox" id="click" ><label for="click" class="text"></label></div></td>';
+                                    }
+                                } else {
+                                    client_data += '<td></td>';
+                                }
+                                client_data += '</tr>';
+                            });
+                            $('#ClientList').append(client_data);
+                        });
+                    });
+                    $('input').keyup(function() {
+                        $('tr:gt(0)').hide().filter(":contains('" + $('input').val() + "')").show();
+                    });
+                    $('#UserType').change(function() {
+                        $('tr:gt(0)').hide().filter(":contains('" + $('#UserType').val() + "')").show();
+                    });
+                </script>
+            </table>
+
+
+
+
+
+
+
+
+
+        </div>
+        <br/>
+
+        <footer>
+            <!-- This is the footer with default 3 divs -->
+            <div>
+                <p>Information provided on this page is for reference purposes only. The company is not responsible for any inconvenience or loss caused by mistakes or omissions. ©2020 DreamHouse Co., Ltd. License number x-xxxxxxx All rights reserved.</p>
+            </div>
+            <div>
+                <p>In addition to the dual-interface search function using maps and lists, there are also diversified functions such as VR property viewing guide, real-time property valuation services, and property comparison, allowing users to search for
+                    properties and receive property market information at a glance.</p>
+            </div>
+            <div class="footerlinks">
+                <p><a href="https://zh-hk.facebook.com/" title="Link">Facebook</a></p>
+                <p><a href="https://www.youtube.com" title="Link">YouTube</a></p>
+                <p><a href="#" title="Link">Link 3</a></p>
+            </div>
+        </footer>
+
+    </div>
+
+
+
+
+    <div id="myModal" class="modal">
+        <form class="modal-content " action="" method="post">
+            <h1>Login Form</h1>
+            <div class="container">
+                <div class="txtb">
+                    <input type="text" name="uname" id="uname" required>
+                    <span data-placeholder="Name"></span>
+                </div><br/><br/><br/><br/>
+                <div class="txtb">
+                    <input type="password" name="pwd" id="pwd" required>
+                    <span data-placeholder="Password"></span>
+                </div><br/><br/><br/>
+                <input type="submit" class="btnSubmit" value="Login" id="login"><br/>
+                <input type="button" class="btnSubmit" value="Cancel" onclick="document.getElementById('myModal').style.display='none'">
+            </div>
+            <div class="bottom-text">
+                You have not account?<a href="CreateAccount.html">Sign up</a><br/> Forgot
+                <a href="#">Password</a>
+            </div>
+            <script type="text/javascript">
+                $(".txtb input").on("focus", function() {
+                    $(this).addClass("focus");
+                });
+
+                $(".txtb input").on("blur", function() {
+                    if ($(this).val() == "")
+                        $(this).addClass("focus");
+                });
+            </script>
+        </form>
+    </div>
+    <script src="./js/ShowLoginForm.js"></script>
+
+</body>
+
+</html>

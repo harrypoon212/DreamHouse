@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dream House</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link href="CSS/Info.css" rel="stylesheet" type="text/css">
+    <script src="./js/Info.js"></script>
+
+    <link href="CSS/index.css" rel="stylesheet" type="text/css">
+
+    <link href="CSS/LoginForm.css" rel="stylesheet" type="text/css">
+    <script src="./js/Login.js"></script>
+
+</head>
+
+<body>
+
+    <div id="mainWrapper">
+        <div class="topnav" id="myTopnav">
+            <a href="index.html">Dream House</a>
+            <a href="CompanyOverview.html">About</a>
+            <div class="dropdown">
+                <button class="dropbtn">Account</button>
+                <div class="dropdown-content">
+                    <a href="Info.html">Information</a>
+                    <a href="#" id="Login">Login</a>
+                    <a href="CreateAccount.html">Sign up</a>
+                    <a href="Agent_Upload.html">Upload property </a>
+                    <a href="Agent_Edit.html"> Edit property</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Manager</button>
+                <div class="dropdown-content">
+                    <a href="SPOILER_ClientList.html">Client List</a>
+                    <a href="CreateAgentAccount.html">Create Agent Account</a>
+                </div>
+            </div>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+
+
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
+        </script>
+
+        <section id="offer">
+            <!--<img id="img" src="img/offerHouse.jpg">-->
+            <!-- The offer section displays a banner text for promotions -->
+            <h2><b>Welcome to the Dream House</b></h2>
+            <p><strong><em>Buy your Dream House now!!!</em></strong></p>
+        </section>
+
+
+        <div id="content">
+
+
+
+            <form method="post">
+                <div class="containerC">
+                    <h1>Upload Property</h1>
+                    <p>Upload your property here.</p>
+                    <hr>
+                    <!--upload image-->
+
+                    <p><img id="output" width="200" /></p>
+                    <div class="input">
+                        <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>
+                        <span class="label info"><label for="file" style="cursor: pointer;" >Upload Image</label></span>
+
+                    </div>
+
+                    <script>
+                        var loadFile = function(event) {
+                            var image = document.getElementById('output');
+                            image.src = URL.createObjectURL(event.target.files[0]);
+                        };
+                    </script>
+                    </br>
+                    </br>
+                    </br>
+
+                    <!--upload detail about property-->
+
+                    <label for="Title"><b>Title</br></label>
+                    <div class="input">
+                        <input type="text" name="title" id="title" required>
+                    </div>
+
+                    <label for="Location"><b>Location</br></label>
+                    <div class="input">
+                        <input type="text" name="location" id="location" required>
+                    </div>
+
+                    <label for="Price"><br/>Price</br></label>
+                    <div class="input">
+                        <input type="text" name="price" id="price" required>
+                    </div>
+
+                    <label for="Size"><br/>Size</br></label>
+                    <div class="input">
+                        <input type="text" name="size" id="size" required>
+                    </div>
+
+                    <label for="Layout"><br/>Room</br></label>
+                    <div class="input">
+                        <input type="text" name="layout" id="layout" required>
+                    </div>
+
+
+                    <hr>
+                    <button class="confirm" id="confirm">Upload</button>
+
+                    <script>
+                        $(document).ready(function() {
+                            $('#confirm').click(function() {
+                                var photo = $('#file').val();
+                                var title = $('#title').val();
+                                var location = $('#location').val();
+                                var price = $('#price').val();
+                                var size = $('#size').val();
+                                var layout = $('#layout').val();
+
+                                if (photo == "") {
+                                    alert("please upload the house img");
+                                } else if (title == "") {
+                                    $('#title').css("background-color", "red")
+                                    $('#title').keypress(function() {
+                                        $(this).css('background-color', 'green');
+                                    });
+                                } else if (location == "") {
+                                    $('#location').css("background-color", "red")
+                                    $('#location').keypress(function() {
+                                        $(this).css('background-color', 'green');
+                                    });
+                                } else if (price == "") {
+                                    $('#price').css("background-color", "red")
+                                    $('#price').keypress(function() {
+                                        $(this).css('background-color', 'green');
+                                    });
+                                } else if (size == "") {
+                                    $('#size').css("background-color", "red")
+                                    $('#size').keypress(function() {
+                                        $(this).css('background-color', 'green');
+                                    });
+                                } else if (layout == "") {
+                                    $('#layout').css("background-color", "red")
+                                    $('#layout').keypress(function() {
+                                        $(this).css('background-color', 'green');
+                                    });
+                                } else {
+                                    alert("Upload Success!");
+                                }
+                            });
+                        });
+                    </script>
+
+                </div>
+            </form>
+        </div>
+        <br/>
+
+        <footer>
+            <!-- This is the footer with default 3 divs -->
+            <div>
+                <p>Information provided on this page is for reference purposes only. The company is not responsible for any inconvenience or loss caused by mistakes or omissions. ©2020 DreamHouse Co., Ltd. License number x-xxxxxxx All rights reserved.</p>
+            </div>
+            <div>
+                <p>In addition to the dual-interface search function using maps and lists, there are also diversified functions such as VR property viewing guide, real-time property valuation services, and property comparison, allowing users to search for
+                    properties and receive property market information at a glance.</p>
+            </div>
+            <div class="footerlinks">
+                <p><a href="https://zh-hk.facebook.com/" title="Link">Facebook</a></p>
+                <p><a href="https://www.youtube.com" title="Link">YouTube</a></p>
+                <p><a href="#" title="Link">Link 3</a></p>
+            </div>
+        </footer>
+
+    </div>
+
+
+
+
+    <div id="myModal" class="modal">
+        <form class="modal-content " action="" method="post">
+            <h1>Login Form</h1>
+            <div class="container">
+                <div class="txtb">
+                    <input type="text" name="uname" id="uname" required>
+                    <span data-placeholder="Name"></span>
+                </div><br/><br/><br/><br/>
+                <div class="txtb">
+                    <input type="password" name="pwd" id="pwd" required>
+                    <span data-placeholder="Password"></span>
+                </div><br/><br/><br/>
+                <input type="submit" class="btnSubmit" value="Login" id="login"><br/>
+                <input type="button" class="btnSubmit" value="Cancel" onclick="document.getElementById('myModal').style.display='none'">
+            </div>
+            <div class="bottom-text">
+                You have not account?<a href="CreateAccount.html">Sign up</a><br/> Forgot
+                <a href="#">Password</a>
+            </div>
+            <script type="text/javascript">
+                $(".txtb input").on("focus", function() {
+                    $(this).addClass("focus");
+                });
+
+                $(".txtb input").on("blur", function() {
+                    if ($(this).val() == "")
+                        $(this).addClass("focus");
+                });
+            </script>
+        </form>
+    </div>
+    <script src="./js/ShowLoginForm.js"></script>
+
+
+</body>
+
+</html>

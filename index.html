@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="CSS/index.css" rel="stylesheet" type="text/css">
+    <link href="CSS/LoginForm.css" rel="stylesheet" type="text/css">
+    <script src="./js/Login.js"></script>
+</head>
+
+<body>
+    <div id="mainWrapper">
+        <div class="topnav" id="myTopnav">
+            <a href="index.html">Dream House</a>
+            <a href="CompanyOverview.html">About</a>
+            <div class="dropdown">
+                <button class="dropbtn">Account</button>
+                <div class="dropdown-content">
+                    <a href="Info.html">Information</a>
+                    <a href="#" id="Login">Login</a>
+                    <a href="CreateAccount.html">Sign up</a>
+                    <a href="Agent_Upload.html">Upload property </a>
+                    <a href="Agent_Edit.html"> Edit property</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Manager</button>
+                <div class="dropdown-content">
+                    <a href="SPOILER_ClientList.html">Client List</a>
+                    <a href="CreateAgentAccount.html">Create Agent Account</a>
+                </div>
+            </div>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+
+
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
+        </script>
+
+
+
+        <section id="offer">
+            <!-- The offer section displays a banner text for promotions -->
+            <h2><b>Welcome to the Dream House</b></h2>
+            <p><strong><em>Buy your Dream House now!!!</em></strong></p>
+        </section>
+
+        <div id="content">
+
+            <section class="sidebar">
+                <!-- This adds a sidebar with 1 searchbox,2 menusets, each with 4 links -->
+                Search From KeyWord<input type="text" id="Search">
+                <script>
+                    $("#Search").keyup(function() {
+                        $('.columns').hide().filter(":contains('" + $('#Search').val() + "')").show();
+                    });
+
+                    $(document).on("change", "#Location", function() {
+                        if ($(this).find("option:selected").text() == "All") {
+                            $('.columns').hide().show();
+                        } else {
+                            $('.columns').hide().filter(":contains('" + $(this).find("option:selected").text() + "')").show();
+                        }
+                    });
+                </script>
+
+
+                <br/> <br/> <br/>
+
+
+                <label>Location</label>
+                <select name="Location" id="Location">
+                    <option value="All">All</option>
+                    <optgroup label="Hong Kong Island">
+                        <option value="Central and Western">Central and Western</option>
+                        <option value="Eastern">Eastern</option>
+                        <option value="Southern">Southern</option>
+                        <option value="Wan Chai">Wan Chai</option>
+                    </optgroup>
+                    <optgroup label="Kowloon">
+                        <option value="Kowloon City">Kowloon City</option>
+                        <option value="Kwun Tong">Kwun Tong</option>
+                        <option value="Sham Shui Po">Sham Shui Po</option>
+                        <option value="Wong Tai Sin">Wong Tai Sin</option>
+                        <option value="Yau Tsim Mong">Yau Tsim Mong</option>
+                    </optgroup>
+                    <optgroup label="New Territories">
+                        <option value="Islands">Islands</option>
+                        <option value="Kwai Tsing">Kwai Tsing</option>
+                        <option value="North">North</option>
+                        <option value="Sai Kung">Sai Kung</option>
+                        <option value="Sha Tin">Sha Tin</option>
+                        <option value="Tai Po">Tai Po</option>
+                        <option value="Tsuen Wan">Tsuen Wan</option>
+                        <option value="Tuen Mun">Tuen Mun</option>
+                        <option value="Yuen Long">Yuen Long</option>
+                    </optgroup>
+                </select>
+                <!-- <button id="btnSearchLocation">Search</button> -->
+
+
+
+
+
+                <br/> <br/> <br/>
+                <div id="menubar">
+                    <nav class="menu">
+                        <!-- Title for menuset 1 -->
+                        <h2>Selling price</h2>
+                        <hr>
+                        <div id="priceChoices"><input type="radio" name="SellingPrice" id="LT480M">Equal or Less than HK$480M</div>
+                        <div id="priceChoices"><input type="radio" name="SellingPrice" id="490_680">490M-680M</div>
+                        <div id="priceChoices"><input type="radio" name="SellingPrice" id="up690">up to 690M</div>
+                        <div id="priceChoices"><input type="radio" name="SellingPrice" id="All">All</div>
+                    </nav>
+                    <nav class="menu">
+                        <!-- Title for menuset 2 -->
+                        <h2>Size</h2>
+                        <hr>
+                        <div id="sizeChoices"><input type="radio" name="Size" id="LT400">Equal or Less than 400sq.ft.</div>
+                        <div id="sizeChoices"><input type="radio" name="Size" id="401_600">401-600sq.ft.</div>
+                        <div id="sizeChoices"><input type="radio" name="Size" id="up601">up to 601sq.ft.</div>
+                    </nav>
+                    <nav class="menu">
+                        <!-- Title for menuset 2 -->
+                        <h2>Application</h2>
+                        <hr>
+                        <div id="Application"><input type="radio" name="Application" id="Rental">Rental</div>
+                        <div id="Application"><input type="radio" name="Application" id="Sale">Sale</div>
+                    </nav>
+                </div>
+
+
+            </section>
+            <script>
+                $(document).ready(function() {
+                    /*Application*/
+                    $('#Rental').click(function() {
+                        $('.searchContent').empty("");
+                        house.forEach(function(element) {
+                            if (element.application == "rental") {
+                                if (element.status == "promotion") {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><div class="promotion">promotion</div><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                } else {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                }
+                            }
+
+                        });
+                    });
+
+                    $('#Sale').click(function() {
+                        $('.searchContent').empty("");
+                        house.forEach(function(element) {
+                            if (element.application == "sale") {
+                                if (element.status == "promotion") {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><div class="promotion">promotion</div><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                } else {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                }
+                            }
+
+                        });
+                    });
+
+
+
+
+
+                    /*All house*/
+                    $('#All').click(function() {
+                        $('.searchContent').empty("");
+                        house.forEach(function(element) {
+                            if (element.status == "promotion") {
+                                $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><div class="promotion">promotion</div><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                            } else {
+                                $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                            }
+                        });
+                    });
+
+                    /*price Less than 480M*/
+                    $('#LT480M').click(function() {
+                        $('.searchContent').empty("");
+                        house.forEach(function(element) {
+                            if (element.price <= 480) {
+                                if (element.status == "promotion") {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><div class="promotion">promotion</div><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                } else {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                }
+                            }
+                        });
+                    });
+
+                    /*price>=490M && price <= 680 */
+                    $('#490_680').click(function() {
+                        $('.searchContent').empty("");
+                        house.forEach(function(element) {
+                            if (element.price >= 490 && element.price <= 680) {
+                                if (element.status == "promotion") {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><div class="promotion">promotion</div><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                } else {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                }
+                            }
+                        });
+                    });
+
+                    /*price up to 690M*/
+                    $('#up690').click(function() {
+                        $('.searchContent').empty("");
+                        house.forEach(function(element) {
+                            if (element.price >= 690) {
+                                if (element.status == "promotion") {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><div class="promotion">promotion</div><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                } else {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                }
+                            }
+                        });
+                    });
+                });
+            </script>
+
+            <script>
+                $(document).ready(function() {
+                    /*size Less than 400sq.ft.*/
+                    $('#LT400').click(function() {
+                        $('.searchContent').empty("");
+                        house.forEach(function(element) {
+                            if (element.size <= 400) {
+                                if (element.status == "promotion") {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><div class="promotion">promotion</div><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                } else {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                }
+                            }
+                        });
+                    });
+
+                    /*size 401 to 600*/
+                    $('#401_600').click(function() {
+                        $('.searchContent').empty("");
+                        house.forEach(function(element) {
+                            if (element.size >= 401 && element.size <= 600) {
+                                if (element.status == "promotion") {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><div class="promotion">promotion</div><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                } else {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                }
+                            }
+                        });
+                    });
+
+                    /*size up to 601*/
+                    $('#up601').click(function() {
+                        $('.searchContent').empty("");
+                        house.forEach(function(element) {
+                            if (element.size >= 601) {
+                                if (element.status == "promotion") {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><div class="promotion">promotion</div><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                } else {
+                                    $(".searchContent").append(`<div class="columns">
+                                              <ul class="price">
+                                                <li class="header"><img class="img" src="./img/house${element.id}.jpg"></li>
+                                                <li class="grey"><h5><a href="houseDetail.html?id=${element.id}">${element.name}</a></h5></li>
+                                                <li>${element.location}</li>
+                                                <li>HK$${element.price}M</li>
+                                                <li>${element.size}sq.ft.</li>
+                                                <li>${element.Layout}</li>
+                                                <li>${element.application}</li>
+                                                <li class="grey"><a id="houseSearch" href="houseDetail.html?id=${element.id}" class="button">Select</a></li>
+                                              </ul>
+                                            </div>`);
+                                }
+                            }
+                        });
+                    });
+                });
+            </script>
+
+            <!-- display house-->
+            <table>
+                <tr>
+                    <td>
+                        <div class="searchContent"></div>
+                    </td>
+                </tr>
+            </table>
+
+
+            <script src="./js/House.js"></script>
+
+
+
+        </div>
+
+        <br/>
+
+        <footer>
+            <!-- This is the footer with default 3 divs -->
+            <div>
+                <p>Information provided on this page is for reference purposes only. The company is not responsible for any inconvenience or loss caused by mistakes or omissions. ©2020 DreamHouse Co., Ltd. License number x-xxxxxxx All rights reserved.</p>
+            </div>
+            <div>
+                <p>In addition to the dual-interface search function using maps and lists, there are also diversified functions such as VR property viewing guide, real-time property valuation services, and property comparison, allowing users to search for
+                    properties and receive property market information at a glance.</p>
+            </div>
+            <div class="footerlinks">
+                <p><a href="https://zh-hk.facebook.com/" title="Link">Facebook</a></p>
+                <p><a href="https://www.youtube.com" title="Link">YouTube</a></p>
+                <p><a href="#" title="Link">Link 3</a></p>
+            </div>
+        </footer>
+
+    </div>
+
+    <div id="myModal" class="modal">
+        <form class="modal-content" action="" method="post">
+            <h1>Login Form</h1>
+            <div class="container">
+                <div class="txtb">
+                    <input type="text" name="uname" id="uname" required>
+                    <span data-placeholder="Name"></span>
+                </div><br/><br/><br/><br/>
+                <div class="txtb">
+                    <input type="password" name="pwd" id="pwd" required>
+                    <span data-placeholder="Password"></span>
+                </div><br/><br/><br/>
+                <input type="submit" class="btnSubmit" value="Login" id="login"><br/>
+                <input type="button" class="btnSubmit" value="Cancel" onclick="document.getElementById('myModal').style.display='none'">
+            </div>
+            <div class="bottom-text">
+                You have not account?<a href="CreateAccount.html">Sign up</a><br/> Forgot
+                <a href="#" id="Forgotpwd">Password</a>
+            </div>
+            <script type="text/javascript">
+                $(".txtb input").on("focus", function() {
+                    $(this).addClass("focus");
+                });
+
+                $(".txtb input").on("blur", function() {
+                    if ($(this).val() == "")
+                        $(this).addClass("focus");
+                });
+            </script>
+        </form>
+    </div>
+    <script src="./js/ShowLoginForm.js"></script>
+
+
+    </div>
+
+
+</body>
+
+</html>
